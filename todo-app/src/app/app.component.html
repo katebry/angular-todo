@@ -12,7 +12,8 @@
 </style>
 
 <h1>{{ title | uppercase }}</h1>
-<app-todo></app-todo>
-<app-messages></app-messages>
-
+<nav>
+  <a routerLink="/todos">Todo List</a>
+</nav>
 <router-outlet></router-outlet>
+<app-messages></app-messages>
