@@ -1,8 +1,12 @@
-<!-- <div>
-    <span>id: </span>{{ todo.id }}</div>
-<div><span>task: </span>{{ todo.task }}</div> -->
-
 <div>
-    <label for="todo-task">Task: </label>
-    <input id="todo-task" [(ngModel)]="todo.task" placeholder="Go to the bank">
-  </div>
+  <label for="todo-task">Task: </label>
+  <input id="todo-task" [(ngModel)]="todo.task" placeholder="Go to the bank" />
+</div>
+
+
+<h2>My Todos</h2>
+<ul class="todos">
+    <li *ngFor="let todo of todos">
+    <span class="badge">{{todo.id}}</span> {{todo.task}}
+  </li>
+</ul>
