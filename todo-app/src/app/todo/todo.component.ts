@@ -13,13 +13,13 @@ export class TodoComponent implements OnInit {
 
   todo: Todo = {
     id: 1,
-    task: 'Go to the bank',
+    task: '',
   };
   
   constructor(private todoService: TodoService) {}
   
   getTodos(): void {
-    this.todos = this.todoService.getTodos();
+    this.todoService.getTodos().subscribe(todos => this.todos = todos);
   }
 
   ngOnInit(): void {
