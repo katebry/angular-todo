@@ -1,15 +1,23 @@
 import { Component, OnInit } from '@angular/core';
+import { Todo } from '../todo';
+import { TodoService } from '../todo.service';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.sass']
+  styleUrls: [ './dashboard.component.sass' ]
 })
 export class DashboardComponent implements OnInit {
+  todos: Todo[] = [];
 
-  constructor() { }
+  constructor(private todoService: TodoService) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.getTodos();
   }
 
+  getTodos(): void {
+    this.todoService.getTodos()
+      .subscribe(todos => this.todos = todos.slice(1, 5));
+  }
 }

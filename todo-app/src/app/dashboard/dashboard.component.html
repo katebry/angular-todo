@@ -1,1 +1,6 @@
-<p>dashboard works!</p>
+<h2>Reminders</h2>
+<div class="reminders-menu">
+  <a *ngFor="let todo of todos">
+    {{todo.task}}
+  </a>
+</div>
