@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MessageService } from '../message.service';
 import { Todo } from '../todo';
 import { TodoService } from '../todo.service';
 
@@ -16,17 +17,19 @@ export class TodoComponent implements OnInit {
     task: '',
   };
   
-  constructor(private todoService: TodoService) {}
+  constructor(private todoService: TodoService, private messageService: MessageService) {}
   
-  getTodos(): void {
-    this.todoService.getTodos().subscribe(todos => this.todos = todos);
-  }
-
   ngOnInit(): void {
     this.getTodos()
   }
 
   onSelect(todo: Todo): void {
     this.selectedTodo = todo;
+    this.messageService.add(`TodosComponent: Selected todo id=${todo.id}`);
   }
+  
+  getTodos(): void {
+    this.todoService.getTodos().subscribe(todos => this.todos = todos);
+  }
+
 }
