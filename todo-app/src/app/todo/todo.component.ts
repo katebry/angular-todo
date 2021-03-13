@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Todo } from '../todo';
-import { TODOS } from '../mock-todos';
+import { TodoService } from '../todo.service';
 
 @Component({
   selector: 'app-todo',
@@ -8,17 +8,23 @@ import { TODOS } from '../mock-todos';
   styleUrls: ['./todo.component.sass'],
 })
 export class TodoComponent implements OnInit {
-  todos = TODOS
+  todos: Todo[] = []
   selectedTodo?: Todo;
 
   todo: Todo = {
     id: 1,
     task: 'Go to the bank',
   };
+  
+  constructor(private todoService: TodoService) {}
+  
+  getTodos(): void {
+    this.todos = this.todoService.getTodos();
+  }
 
-  constructor() {}
-
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getTodos()
+  }
 
   onSelect(todo: Todo): void {
     this.selectedTodo = todo;
