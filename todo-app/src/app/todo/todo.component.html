@@ -5,16 +5,9 @@
 
 <h2>My Todos</h2>
 <ul class="todos">
-  <li *ngFor="let todo of todos" (click)="onSelect(todo)">
+  <li *ngFor="let todo of todos" [class.selected]="todo === selectedTodo" (click)="onSelect(todo)">
     <span class="badge">{{ todo.id }}</span> {{ todo.task }}
   </li>
 </ul>
 
-<div *ngIf="selectedTodo">
-  <h2>Task: {{ selectedTodo.task | uppercase }}</h2>
-  <div><span>id: </span>{{ selectedTodo.id }}</div>
-  <div>
-    <label for="todo-task">Task: </label>
-    <input id="todo-task" [(ngModel)]="selectedTodo.task" placeholder="task" />
-  </div>
-</div>
+<app-todo-detail [todo]="selectedTodo"></app-todo-detail>
