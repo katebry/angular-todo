@@ -3,17 +3,18 @@
   <input id="todo-task" [(ngModel)]="todo.task" placeholder="Go to the bank" />
 </div>
 
-
 <h2>My Todos</h2>
 <ul class="todos">
-    <li *ngFor="let todo of todos" (click)="onSelect(todo)">
-    <span class="badge">{{todo.id}}</span> {{todo.task}}
+  <li *ngFor="let todo of todos" (click)="onSelect(todo)">
+    <span class="badge">{{ todo.id }}</span> {{ todo.task }}
   </li>
 </ul>
 
-<h2>Task: {{selectedTodo.task | uppercase}}</h2>
-<div><span>id: </span>{{selectedTodo.id}}</div>
-<div>
-  <label for="todo-task">Hero name: </label>
-  <input id="todo-task" [(ngModel)]="selectedTodo.task" placeholder="task">
+<div *ngIf="selectedTodo">
+  <h2>Task: {{ selectedTodo.task | uppercase }}</h2>
+  <div><span>id: </span>{{ selectedTodo.id }}</div>
+  <div>
+    <label for="todo-task">Task: </label>
+    <input id="todo-task" [(ngModel)]="selectedTodo.task" placeholder="task" />
+  </div>
 </div>
