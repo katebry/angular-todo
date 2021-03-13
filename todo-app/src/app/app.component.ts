@@ -7,4 +7,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'To do App';
+  subHeading = 'To do list: '
 }
