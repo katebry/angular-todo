@@ -22,11 +22,6 @@ export class TodoComponent implements OnInit {
   ngOnInit(): void {
     this.getTodos()
   }
-
-  onSelect(todo: Todo): void {
-    this.selectedTodo = todo;
-    this.messageService.add(`TodosComponent: Selected todo id=${todo.id}`);
-  }
   
   getTodos(): void {
     this.todoService.getTodos().subscribe(todos => this.todos = todos);

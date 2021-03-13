@@ -1,6 +1,6 @@
 <h2>Reminders</h2>
 <div class="reminders-menu">
-  <a *ngFor="let todo of todos">
+  <a *ngFor="let todo of todos" routerLink="/todo/{{todo.id}}">
     {{todo.task}}
   </a>
 </div>

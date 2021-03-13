@@ -15,4 +15,11 @@ export class TodoService {
     this.messageService.add('TodoService: fetched todos');
     return todos;
   }
+
+  getTodo(id: number): Observable<Todo> {
+    // TODO: send the message _after_ fetching the hero
+    this.messageService.add(`TodoService: fetched todo id=${id}`);
+    return of(TODOS.find(todo => todo.id === id));
+  }
+
 }
