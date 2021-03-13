@@ -6,7 +6,14 @@
 
 <h2>My Todos</h2>
 <ul class="todos">
-    <li *ngFor="let todo of todos">
+    <li *ngFor="let todo of todos" (click)="onSelect(todo)">
     <span class="badge">{{todo.id}}</span> {{todo.task}}
   </li>
 </ul>
+
+<h2>Task: {{selectedTodo.task | uppercase}}</h2>
+<div><span>id: </span>{{selectedTodo.id}}</div>
+<div>
+  <label for="todo-task">Hero name: </label>
+  <input id="todo-task" [(ngModel)]="selectedTodo.task" placeholder="task">
+</div>

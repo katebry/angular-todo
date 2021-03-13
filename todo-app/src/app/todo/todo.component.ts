@@ -9,6 +9,7 @@ import { TODOS } from '../mock-todos';
 })
 export class TodoComponent implements OnInit {
   todos = TODOS
+  selectedTodo?: Todo;
 
   todo: Todo = {
     id: 1,
@@ -18,4 +19,8 @@ export class TodoComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
+
+  onSelect(todo: Todo): void {
+    this.selectedTodo = todo;
+  }
 }
