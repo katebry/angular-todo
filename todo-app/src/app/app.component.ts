@@ -6,6 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.sass']
 })
 export class AppComponent {
-  title = 'To do App';
-  subHeading = 'To do list: '
+  title = 'To do list: '
 }

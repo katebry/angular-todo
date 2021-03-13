@@ -1,2 +1,8 @@
-<div><span>id: {{todo.id}}</span></div>
-<div><span>task: {{todo.task}}</span></div>
+<!-- <div>
+    <span>id: </span>{{ todo.id }}</div>
+<div><span>task: </span>{{ todo.task }}</div> -->
+
+<div>
+    <label for="todo-task">Task: </label>
+    <input id="todo-task" [(ngModel)]="todo.task" placeholder="Go to the bank">
+  </div>
