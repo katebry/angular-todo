@@ -2,16 +2,15 @@
 <div>
   <label for="todo-task">Task: </label>
   <input for="new-todo" #todoTask />
-  <button class="add-button" (click)="add(todoTask.value); todoTask.value=''">
+  <button class="add-button" (click)="add(todoTask.value); todoTask.value = ''">
     Add chore
   </button>
 </div>
 <ul class="todos">
   <li *ngFor="let todo of todos">
-    <a routerLink="/todo/{{todo.id}}">
+    <a routerLink="/todo/{{ todo.id }}">
       <span class="badge">{{ todo.id }}</span> {{ todo.task }}
     </a>
+    <button class="delete" title="delete todo" (click)="delete(todo)">x</button>
   </li>
 </ul>
-
-<!-- <app-todo-detail [todo]="selectedTodo"></app-todo-detail> -->

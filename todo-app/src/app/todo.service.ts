@@ -61,4 +61,15 @@ export class TodoService {
       catchError(this.handleError<Todo>('addTodo'))
     );
   }
+
+  deleteTodo(todo: Todo | number): Observable<Todo> {
+    const id = typeof todo === 'number' ? todo : todo.id;
+    const url = `${this.todosUrl}/${id}`;
+  
+    return this.http.delete<Todo>(url, this.httpOptions).pipe(
+      tap(_ => this.log(`deleted todo id=${id}`)),
+      catchError(this.handleError<Todo>('deleteTodo'))
+    );
+  }
+
 }
