@@ -1,9 +1,11 @@
+<h2>My Todos</h2>
 <div>
   <label for="todo-task">Task: </label>
-  <input id="todo-task" [(ngModel)]="todo.task" placeholder="Go to the bank" />
+  <input for="new-todo" #todoTask />
+  <button class="add-button" (click)="add(todoTask.value); todoTask.value=''">
+    Add chore
+  </button>
 </div>
-
-<h2>My Todos</h2>
 <ul class="todos">
   <li *ngFor="let todo of todos">
     <a routerLink="/todo/{{todo.id}}">

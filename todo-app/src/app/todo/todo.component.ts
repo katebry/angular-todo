@@ -27,4 +27,13 @@ export class TodoComponent implements OnInit {
     this.todoService.getTodos().subscribe(todos => this.todos = todos);
   }
 
+  add(task: string): void {
+    task = task.trim();
+    if (!task) { return; }
+    this.todoService.addTodo({ task } as Todo)
+      .subscribe(todo => {
+        this.todos.push(todo);
+      });
+  }
+
 }

@@ -23,18 +23,19 @@ export class TodoService {
 
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
-      console.error(error); 
+      console.error(error);
       this.log(`${operation} failed: ${error.message}`);
       return of(result as T);
     };
   }
 
   httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
   };
 
   getTodos(): Observable<Todo[]> {
-    return this.http.get<Todo[]>(this.todosUrl).pipe(tap(_ => this.log('fetched todos')),
+    return this.http.get<Todo[]>(this.todosUrl).pipe(
+      tap((_) => this.log('fetched todos')),
       catchError(this.handleError<Todo[]>('getTodos', []))
     );
   }
@@ -42,15 +43,22 @@ export class TodoService {
   getTodo(id: number): Observable<Todo> {
     const url = `${this.todosUrl}/${id}`;
     return this.http.get<Todo>(url).pipe(
-      tap(_ => this.log(`fetched todo id=${id}`)),
+      tap((_) => this.log(`fetched todo id=${id}`)),
       catchError(this.handleError<Todo>(`getTodo id=${id}`))
     );
   }
 
   updateTodo(hero: Todo): Observable<any> {
     return this.http.put(this.todosUrl, hero, this.httpOptions).pipe(
-      tap(_ => this.log(`updated todo id=${hero.id}`)),
+      tap((_) => this.log(`updated todo id=${hero.id}`)),
       catchError(this.handleError<any>('updateTodo'))
+    );
+  }
+
+  addTodo(todo: Todo): Observable<Todo> {
+    return this.http.post<Todo>(this.todosUrl, todo, this.httpOptions).pipe(
+      tap((newTodo: Todo) => this.log(`added todo w/ id=${newTodo.id}`)),
+      catchError(this.handleError<Todo>('addTodo'))
     );
   }
 }
