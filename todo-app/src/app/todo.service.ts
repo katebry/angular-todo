@@ -29,6 +29,10 @@ export class TodoService {
     };
   }
 
+  httpOptions = {
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  };
+
   getTodos(): Observable<Todo[]> {
     return this.http.get<Todo[]>(this.todosUrl).pipe(tap(_ => this.log('fetched todos')),
       catchError(this.handleError<Todo[]>('getTodos', []))
@@ -40,6 +44,13 @@ export class TodoService {
     return this.http.get<Todo>(url).pipe(
       tap(_ => this.log(`fetched todo id=${id}`)),
       catchError(this.handleError<Todo>(`getTodo id=${id}`))
+    );
+  }
+
+  updateTodo(hero: Todo): Observable<any> {
+    return this.http.put(this.todosUrl, hero, this.httpOptions).pipe(
+      tap(_ => this.log(`updated todo id=${hero.id}`)),
+      catchError(this.handleError<any>('updateTodo'))
     );
   }
 }
