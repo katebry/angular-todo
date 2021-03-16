@@ -8,19 +8,19 @@ import { Todo } from './todo';
 export class InMemoryDataService implements InMemoryDbService {
   createDb() {
     const todos = [
-      { id: 11, task: 'Clean bedroom' },
-      { id: 12, task: 'Take out bins' },
-      { id: 13, task: 'Wash dishes' },
-      { id: 14, task: 'Mop kitchen' },
-      { id: 15, task: 'Go to skip' },
-      { id: 16, task: 'Change bedsheets' },
-      { id: 17, task: 'Mow grass' },
+      { id: 1, task: 'Clean bedroom' },
+      { id: 2, task: 'Take out bins' },
+      { id: 3, task: 'Wash dishes' },
+      { id: 4, task: 'Mop kitchen' },
+      { id: 5, task: 'Go to skip' },
+      { id: 6, task: 'Change bedsheets' },
+      { id: 7, task: 'Mow grass' },
     ];
     return { todos };
   }
 
   // Overrides the genId method to ensure that a todo always has an id.
-  // If the todos array is empty, the method below returns the initial number (11).
+  // If the todos array is empty, the method below returns the initial number (1).
   // If the todos array is not empty, the method below returns the highest todo id + 1.
   genId(todos: Todo[]): number {
     return todos.length > 0

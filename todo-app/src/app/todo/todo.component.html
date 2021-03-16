@@ -5,11 +5,15 @@
     Add chore
   </button>
 </div>
-<ul class="todos">
-  <li *ngFor="let todo of todos">
-    <a routerLink="/todo/{{ todo.id }}">
-      <span class="badge">{{ todo.id }}</span> {{ todo.task }}
-    </a>
-    <button class="delete" title="delete todo" (click)="delete(todo)">x</button>
-  </li>
-</ul>
+<div class="todo-container">
+  <ul class="todos">
+    <li *ngFor="let todo of todos">
+      <a routerLink="/todo/{{ todo.id }}">
+        <span class="badge">{{ todo.id }}</span> {{ todo.task }}
+      </a>
+      <button class="delete" title="delete todo" (click)="delete(todo)">
+        x
+      </button>
+    </li>
+  </ul>
+</div>
