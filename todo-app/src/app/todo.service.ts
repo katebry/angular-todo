@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { catchError, map, tap } from 'rxjs/operators';
+import { catchError, tap } from 'rxjs/operators';
 import { Observable, of } from 'rxjs';
 import { MessageService } from './message.service';
 import { Todo } from './todo';
-import { TODOS } from './mock-todos';
 
 @Injectable({
   providedIn: 'root',
@@ -18,7 +17,7 @@ export class TodoService {
   private todosUrl = 'api/todos';
 
   private log(message: string) {
-    this.messageService.add(`TodoService: ${message}`);
+    this.messageService.add(`Mock HTTP Server request: ${message}`);
   }
 
   private handleError<T>(operation = 'operation', result?: T) {
@@ -43,21 +42,21 @@ export class TodoService {
   getTodo(id: number): Observable<Todo> {
     const url = `${this.todosUrl}/${id}`;
     return this.http.get<Todo>(url).pipe(
-      tap((_) => this.log(`fetched todo id=${id}`)),
-      catchError(this.handleError<Todo>(`getTodo id=${id}`))
+      tap((_) => this.log(`fetched todo with the id: ${id}`)),
+      catchError(this.handleError<Todo>(`getTodo id: ${id}`))
     );
   }
 
   updateTodo(todo: Todo): Observable<any> {
     return this.http.put(this.todosUrl, todo, this.httpOptions).pipe(
-      tap((_) => this.log(`updated todo id=${todo.id}`)),
+      tap((_) => this.log(`updated todo with the id: ${todo.id}`)),
       catchError(this.handleError<any>('updateTodo'))
     );
   }
 
   addTodo(todo: Todo): Observable<Todo> {
     return this.http.post<Todo>(this.todosUrl, todo, this.httpOptions).pipe(
-      tap((newTodo: Todo) => this.log(`added todo w/ id=${newTodo.id}`)),
+      tap((newTodo: Todo) => this.log(`added todo with the id:${newTodo.id}`)),
       catchError(this.handleError<Todo>('addTodo'))
     );
   }
