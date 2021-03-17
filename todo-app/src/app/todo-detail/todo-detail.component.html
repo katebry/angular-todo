@@ -1,10 +1,14 @@
-<div *ngIf="todo">
+<div class="container" *ngIf="todo">
   <button (click)="goBack()">go back</button>
-  <h2>Task: {{ todo.task | uppercase }}</h2>
-  <div><span>id: </span>{{ todo.id }}</div>
-  <div>
-    <label for="todo-task">Task: </label>
-    <input id="todo-task" [(ngModel)]="todo.task" placeholder="task" />
+  <div class="main-content">
+    <div class="content">
+      <h2>Task: {{ todo.task | uppercase }}</h2>
+      <div><span>id: </span>{{ todo.id }}</div>
+      <div>
+        <label for="todo-task">Task: </label>
+        <input id="todo-task" [(ngModel)]="todo.task" placeholder="task" />
+        <button (click)="save()">save</button>
+      </div>
+    </div>
   </div>
-  <button (click)="save()">save</button>
 </div>
