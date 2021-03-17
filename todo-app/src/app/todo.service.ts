@@ -56,7 +56,7 @@ export class TodoService {
 
   addTodo(todo: Todo): Observable<Todo> {
     return this.http.post<Todo>(this.todosUrl, todo, this.httpOptions).pipe(
-      tap((newTodo: Todo) => this.log(`added todo with the id:${newTodo.id}`)),
+      tap((newTodo: Todo) => this.log(`added todo with the id: ${newTodo.id}`)),
       catchError(this.handleError<Todo>('addTodo'))
     );
   }
@@ -66,7 +66,7 @@ export class TodoService {
     const url = `${this.todosUrl}/${id}`;
   
     return this.http.delete<Todo>(url, this.httpOptions).pipe(
-      tap(_ => this.log(`deleted todo id=${id}`)),
+      tap(_ => this.log(`deleted todo with the id: ${id}`)),
       catchError(this.handleError<Todo>('deleteTodo'))
     );
   }

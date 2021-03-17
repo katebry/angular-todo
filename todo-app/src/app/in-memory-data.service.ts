@@ -13,7 +13,7 @@ export class InMemoryDataService implements InMemoryDbService {
       { id: 3, task: 'Wash dishes' },
       { id: 4, task: 'Mop kitchen' },
       { id: 5, task: 'Go to skip' },
-      { id: 6, task: 'Change bedsheets' },
+      { id: 6, task: 'Wash car' },
       { id: 7, task: 'Mow grass' },
     ];
     return { todos };
